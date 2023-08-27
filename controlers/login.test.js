@@ -1,7 +1,7 @@
 require("dotenv").config();
 const request = require("supertest");
 const mongoose = require("mongoose");
-const { app } = require("../app"); // Убедитесь, что путь указан правильно
+const { app } = require("../app");
 
 const { DB_HOST } = process.env;
 
@@ -22,8 +22,8 @@ describe("test login controller", () => {
 
   test("the response must have a status code 200", async () => {
     const response = await request(app).post("/users/login").send({
-      email: "Gorec@gor.com", // Подставьте существующий email из вашей базы данных
-      password: "111111", // Подставьте правильный пароль для данного пользователя
+      email: "Gorec@gor.com",
+      password: "111111",
     });
 
     expect(response.statusCode).toBe(200);
@@ -31,8 +31,8 @@ describe("test login controller", () => {
 
   test("response should return a token", async () => {
     const response = await request(app).post("/users/login").send({
-      email: "Gorec@gor.com", // Подставьте существующий email из вашей базы данных
-      password: "111111", // Подставьте правильный пароль для данного пользователя
+      email: "Gorec@gor.com",
+      password: "111111",
     });
 
     expect(response.body.token).toBeDefined();
@@ -40,8 +40,8 @@ describe("test login controller", () => {
 
   test("response should return a user object with email and subscription as strings", async () => {
     const response = await request(app).post("/users/login").send({
-      email: "Gorec@gor.com", // Подставьте существующий email из вашей базы данных
-      password: "111111", // Подставьте правильный пароль для данного пользователя
+      email: "Gorec@gor.com",
+      password: "111111",
     });
 
     const { user } = response.body;
