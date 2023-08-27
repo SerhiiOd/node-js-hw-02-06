@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 const app = require("./app");
-
-require("dotenv").config();
+const { DB_HOST } = process.env;
 
 mongoose.set("strictQuery", true);
-
 mongoose
-  .connect(process.env.DB_HOST)
-  .then(() => app.listen(3000))
+  .connect(DB_HOST)
+  .then(() => app.listen(3000), console.log("Start server 3000"))
   .catch((error) => {
     console.log(error.message);
     process.exit(1);
