@@ -1,7 +1,7 @@
 require("dotenv").config();
 const request = require("supertest");
 const mongoose = require("mongoose");
-const { app } = require("../app");
+const app = require("../app");
 
 const { DB_HOST } = process.env;
 

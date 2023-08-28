@@ -5,7 +5,11 @@ const { DB_HOST } = process.env;
 mongoose.set("strictQuery", true);
 mongoose
   .connect(DB_HOST)
-  .then(() => app.listen(3000), console.log("Start server 3000"))
+  .then(() => {
+    app.listen(3000, () => {
+      console.log("Server is running on port 3000");
+    });
+  })
   .catch((error) => {
     console.log(error.message);
     process.exit(1);
